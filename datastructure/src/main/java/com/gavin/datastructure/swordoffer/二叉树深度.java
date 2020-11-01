@@ -24,7 +24,7 @@ class 二叉树深度 {
 
     public static int TreeDepth(TreeNode root) {
 
-        if(root == null){
+        if (root == null){
             return 0;
         }
         int left = TreeDepth(root.left);

@@ -4,10 +4,13 @@ class QuickSort2 {
     public static void main(String[] args) {
         int[] arr = {20, 40, 33, 50, 15, 12, 55, 42, 90};
 
-
+        sort(arr);
+        for (int i : arr) {
+            System.out.println(i);
+        }
     }
 
-    private void sort(int[] arr) {
+    private static void sort(int[] arr) {
       int initDex = arr.length / 2 + 1;
 
 

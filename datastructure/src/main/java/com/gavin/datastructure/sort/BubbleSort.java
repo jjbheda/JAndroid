@@ -1,5 +1,10 @@
 package com.gavin.datastructure.sort;
 
+/**
+ * 冒泡法排序
+ *
+ */
+
 class BubbleSort {
     public static void main(String[] args) {
 

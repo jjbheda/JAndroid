@@ -26,14 +26,16 @@ package com.gavin.datastructure.leetcode;
 
 
 class 相交链表 {
-    static ListNode headA, headB;
+     ListNode headA, headB;
 
     public static void main(String[] args) {
-        init();
-       getIntersectionNode();
+
+        相交链表 test = new 相交链表();
+        test.init();
+        test.getIntersectionNode();
     }
 
-    public static ListNode getIntersectionNode() {
+    public  ListNode getIntersectionNode() {
         // 判空
         if (headA == null || headB == null) {
             return null;
@@ -56,7 +58,7 @@ class 相交链表 {
 
     }
 
-    public static void init() {
+    public  void init() {
         headA = new ListNode(4);
         ListNode one = new ListNode(1);
         ListNode two = new ListNode(8);

@@ -1,5 +1,10 @@
 package com.gavin.datastructure.sort;
 
+/**
+ *  父节点与当前节点的下标对应关系为：
+ *  当前节点下标为 I 则父节点的下标为（ I - 1）/2 = Parent ， 左孩子节点的下标为：2 * I+1= Lchild ,右节点的下标为：2 * I+2= Rchild 。
+ *
+ */
 public class HeapSort {
     public static void main(String[] args) {
 //        int[] arr = {5, 1, 7, 3, 1, 6, 9, 4};

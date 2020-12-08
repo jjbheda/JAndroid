@@ -1,1 +1,3 @@
+include ':xc'
+include ':kotlintest'
 include ':app', ':datastructure', ':corejava'

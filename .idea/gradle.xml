@@ -14,6 +14,8 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/corejava" />
             <option value="$PROJECT_DIR$/datastructure" />
+            <option value="$PROJECT_DIR$/kotlintest" />
+            <option value="$PROJECT_DIR$/xc" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

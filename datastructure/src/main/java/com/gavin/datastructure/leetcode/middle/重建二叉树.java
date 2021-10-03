@@ -52,21 +52,40 @@ import java.util.HashMap;
  * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
  */
 class 重建二叉树 {
-    int[] preorder;
-    HashMap<Integer, Integer> dic = new HashMap<>();
-    public TreeNode buildTree(int[] preorder, int[] inorder) {
-        this.preorder = preorder;
-        for(int i = 0; i < inorder.length; i++)
-            dic.put(inorder[i], i);
-        return recur(0, 0, inorder.length - 1);
+
+    HashMap<Integer ,Integer> indexMap = new HashMap();
+    public TreeNode reConstructBinaryTree(int [] pre, int [] in) {
+        for (int i = 0; i < in.length; i++) {
+            indexMap.put(in[i], i);
+        }
+
+        // 注意这里的in 其实没用到，删掉也可以 。只有上面算索引时用到了
+        return build(pre, 0, pre.length - 1 , in, 0, in.length - 1);
     }
-    TreeNode recur(int root, int left, int right) {
-        if(left > right) return null;                          // 递归终止
-        TreeNode node = new TreeNode(preorder[root]);          // 建立根节点
-        int i = dic.get(preorder[root]);                       // 划分根节点、左子树、右子树
-        node.left = recur(root + 1, left, i - 1);              // 开启左子树递归
-        node.right = recur(root + i - left + 1, i + 1, right); // 开启右子树递归
-        return node;                                           // 回溯返回根节点
+
+    TreeNode build(int[] preorder, int preStart, int preEnd,
+                   int[] inorder, int inStart, int inEnd) {
+
+        if (preStart > preEnd) {
+            return null;
+        }
+
+        // root 节点对应的值就是前序遍历数组的第一个元素
+        int rootVal = preorder[preStart];
+        // rootVal 在中序遍历数组中的索引
+        int index = indexMap.get(rootVal);
+
+        int leftSize = index - inStart;
+
+        // 先构造出当前根节点
+        TreeNode root = new TreeNode(rootVal);
+        // 递归构造左右子树
+        root.left = build(preorder, preStart + 1, preStart + leftSize,
+                inorder, inStart, index - 1);
+
+        root.right = build(preorder, preStart + leftSize + 1, preEnd,
+                inorder, index + 1, inEnd);
+        return root;
     }
 
 }

@@ -48,9 +48,7 @@ class 全排列 {
         return res;
     }
 
-    private void dfs(int[] nums, int len, int depth,
-                     List<Integer> path, boolean[] used,
-                     List<List<Integer>> res) {
+    private void dfs(int[] nums, int len, int depth, List<Integer> path, boolean[] used, List<List<Integer>> res) {
         if (depth == len) {
             res.add(new ArrayList<>(path));
             return;
@@ -69,5 +67,7 @@ class 全排列 {
             }
         }
     }
+
+
 }
 

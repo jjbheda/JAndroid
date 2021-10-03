@@ -38,8 +38,8 @@ public class 翻转链表 {
     public static ListNode reverseList2(ListNode head) {
         if (head == null || head.next == null) return head;
         ListNode p = reverseList2(head.next);
-        head.next.next = head;
-        head.next = null;
+        head.next.next = head;      //执行到队列尾部后，将队尾的next 指向队列头
+        head.next = null;           // 断开队列头的next
         return p;
     }
 

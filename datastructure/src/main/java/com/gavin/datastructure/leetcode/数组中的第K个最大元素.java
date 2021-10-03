@@ -32,7 +32,7 @@ public class 数组中的第K个最大元素 {
     public static int findKthLargest(int[] nums, int k) {
 // init heap 'the smallest element first'
         int DEFAULT_INITIAL_CAPACITY = 11;
-        PriorityQueue<Integer> heap=new PriorityQueue<Integer>(DEFAULT_INITIAL_CAPACITY, new Comparator<Integer>() {
+        PriorityQueue<Integer> heap = new PriorityQueue<Integer>(DEFAULT_INITIAL_CAPACITY, new Comparator<Integer>() {
             @Override
             public int compare(Integer o1, Integer o2) {
                 return o1 - o2;

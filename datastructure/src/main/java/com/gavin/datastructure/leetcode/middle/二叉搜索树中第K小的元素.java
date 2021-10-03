@@ -38,22 +38,25 @@ import java.util.List;
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 class 二叉搜索树中第K小的元素 {
-    List<Integer> arr = new ArrayList<>();
-
-    private List<Integer> middleOrder(TreeNode root, List<Integer> arr) {
-        if (root == null) {
-            return arr;
+    ArrayList<TreeNode> array = new ArrayList();
+    TreeNode KthNode(TreeNode pRoot, int k) {
+        if (pRoot == null) {
+            return null;
         }
-        middleOrder(root.left, arr);
-        arr.add(root.val);
-        middleOrder(root.right, arr);
-
-        return arr;
+        middleOrder(pRoot, array);
+        if(k >= 1 && array.size() >= k) {
+            return array.get(k-1);
+        }
+        return null;
     }
 
-    public int kthSmallest(TreeNode root, int k) {
-        List<Integer> nums = middleOrder(root, arr);
-        return nums.get(k - 1);
-    }
+    void middleOrder(TreeNode pRoot, ArrayList<TreeNode> array) {
+        if (pRoot == null) {
+            return ;
+        }
+        middleOrder(pRoot.left, array);
+        array.add(pRoot);
+        middleOrder(pRoot.right, array);
 
+    }
 }

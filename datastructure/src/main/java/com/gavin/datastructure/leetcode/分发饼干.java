@@ -23,14 +23,18 @@ public class 分发饼干 {
     public static int findContentChildren(int[] children, int[] cookies) {
         Arrays.sort(children);
         Arrays.sort(cookies);
-        int child=0,cookie=0;
-        while(child < children.length && cookie < cookies.length){
-            if(children[child] <= cookies[cookie]) {
-                child ++;
-                cookie ++;
+        int numOfChildren = children.length, numOfCookies = cookies.length;
+        int count = 0;
+        for (int i = 0, j = 0; i < numOfChildren && j < numOfCookies; i++, j++) {
+            while (j < numOfCookies && children[i] > cookies[j]) {
+                j++;
+            }
+            if (j < numOfCookies) {
+                count++;
             }
         }
-        return child;
+        return count;
+
     }
 
 }

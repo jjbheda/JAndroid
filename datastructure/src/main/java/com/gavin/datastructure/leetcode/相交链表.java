@@ -26,7 +26,7 @@ package com.gavin.datastructure.leetcode;
 
 
 class 相交链表 {
-     ListNode headA, headB;
+    private ListNode headA, headB;
 
     public static void main(String[] args) {
 
@@ -35,7 +35,7 @@ class 相交链表 {
         test.getIntersectionNode();
     }
 
-    public  ListNode getIntersectionNode() {
+    private ListNode getIntersectionNode() {
         // 判空
         if (headA == null || headB == null) {
             return null;
@@ -85,7 +85,7 @@ class 相交链表 {
         four2.next = five;
     }
 
-    public static class ListNode {
+    private static class ListNode {
         int val;
         ListNode next;
 

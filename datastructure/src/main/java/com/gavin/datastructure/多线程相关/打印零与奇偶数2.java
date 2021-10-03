@@ -1,52 +1,52 @@
 package com.gavin.datastructure.多线程相关;
 
-import java.util.concurrent.Semaphore;
 import java.util.function.IntConsumer;
 
-class 打印零与奇偶数 {
+// 有点绕，最好用semaphore 解决
+class 打印零与奇偶数2 {
     private int n;
-    private Semaphore zeroSema = new Semaphore(1);
-    private Semaphore oddSema = new Semaphore(0);//奇数
-    private Semaphore evenSema = new Semaphore(0);//偶数
-
-    public 打印零与奇偶数(int n) {
+    private volatile int state;
+    public 打印零与奇偶数2(int n) {
         this.n = n;
     }
 
     public void zero(IntConsumer printNumber) throws InterruptedException {
-        for (int i = 1; i <= n; i++) {
-            zeroSema.acquire();
+        for (int i = 0; i < n; i++) {
+            while (state != 0) {
+                Thread.yield();
+            }
             printNumber.accept(0);
-            if ((i & 1) == 1) {//奇数
-                oddSema.release();   // 奇数释放到
+            if (i % 2 == 0) {
+                state = 1;
             } else {
-                evenSema.release();
+                state = 2;
             }
         }
     }
 
+    // 偶数
     public void even(IntConsumer printNumber) throws InterruptedException {
-        for (int i = 1; i <= n; i++) {
-            if ((i & 1) == 0) {//偶数 打印偶数 并释放zero的线程
-                evenSema.acquire();
-                printNumber.accept(i);
-                zeroSema.release();
+        for (int i = 2; i <= n; i += 2) {
+            while (state != 2) {
+                Thread.yield();
             }
+            printNumber.accept(i);
+            state = 0;
         }
     }
 
     public void odd(IntConsumer printNumber) throws InterruptedException {
-        for (int i = 1; i <= n; i++) {
-            if ((i & 1) == 1) {//奇数，打印奇数，并释放zero的线程
-                oddSema.acquire();
-                printNumber.accept(i);
-                zeroSema.release();
+        for (int i = 1; i <= n; i += 2) {
+            while (state != 1) {
+                Thread.yield();
             }
+            printNumber.accept(i);
+            state = 0;
         }
     }
 
     public static void main(String[] args) {
-        final 打印零与奇偶数 test = new 打印零与奇偶数(10);
+        final 打印零与奇偶数2 test = new 打印零与奇偶数2(10);
 
         new Thread(new Runnable() {
             @Override

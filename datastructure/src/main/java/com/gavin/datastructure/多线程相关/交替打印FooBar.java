@@ -9,7 +9,7 @@ class 交替打印FooBar {
         }
 
         private Semaphore foo = new Semaphore(1);
-        private Semaphore bar = new Semaphore(1);
+        private Semaphore bar = new Semaphore(0);
 
         public  void foo(Runnable printFoo) throws InterruptedException {
 

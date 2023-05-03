@@ -8,7 +8,6 @@ package com.gavin.datastructure.leetcode.easy;
  * 更改数组 nums ，使 nums 的前 k 个元素包含唯一元素，并按照它们最初在 nums 中出现的顺序排列。nums 的其余元素与 nums 的大小不重要。
  */
 class 删除相同元素 {
-
     public static int[] nums = {0,0,1,1,1,2,2,3,3,4};
 
     public static void main(String[] args) {
@@ -17,7 +16,6 @@ class 删除相同元素 {
 
     public static int removeDuplicates(int[] nums) {
         int i = 0;
-
         for (int j = 1; j < nums.length; j ++) {
             if(nums[i] !=  nums[j]) {
                 nums[i+1] =  nums[j];

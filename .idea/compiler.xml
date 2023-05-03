@@ -5,8 +5,8 @@
       <module name="corejava" target="1.7" />
       <module name="datastructure" target="1.7" />
       <module name="jandroid.app" target="1.8" />
-      <module name="JAndroid.app" target="1.8" />
-      <module name="JAndroid.xc" target="1.8" />
+      <module name="JAndroid.app" target="11" />
+      <module name="JAndroid.xc" target="11" />
       <module name="jandroid.xc" target="1.8" />
     </bytecodeTargetLevel>
   </component>

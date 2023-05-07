@@ -15,16 +15,18 @@ class 删除相同元素 {
     }
 
     public static int removeDuplicates(int[] nums) {
-        int i = 0;
-        for (int j = 1; j < nums.length; j ++) {
-            if(nums[i] !=  nums[j]) {
-                nums[i+1] =  nums[j];
-                i++;
+        int n = nums.length;
+        if (n == 0) {
+            return 0;
+        }
+        int fast = 1, slow = 1;
+        while (fast < n) {
+            if (nums[fast] != nums[fast - 1]) {
+                nums[slow] = nums[fast];
+                ++slow;
             }
+            ++fast;
         }
-        for (int k = 0;k < i; k++) {
-            System.out.println(nums[k]);
-        }
-        return i;
+        return slow;
     }
 }

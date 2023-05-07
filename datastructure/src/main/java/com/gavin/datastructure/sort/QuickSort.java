@@ -34,13 +34,15 @@ public class QuickSort {
             }
             //如果满足条件则交换
             if (i < j) {
-                t = arr[j];
-                arr[j] = arr[i];
-                arr[i] = t;
+//                t = arr[j];
+//                arr[j] = arr[i];
+//                arr[i] = t;
+                swap(arr, i, j);
             }
 
         }
-        //最后将基准为与i和j相等位置的数字交换
+        //最后将基准为与i和j相等位置的数字交换  初始基准数字是arr[low]的值，探测结束时，需要把基准位跟最终碰头的值交换
+        //https://blog.csdn.net/shujuelin/article/details/82423852
         arr[low] = arr[i];
         arr[i] = temp;
         //递归调用左半数组
@@ -49,9 +51,16 @@ public class QuickSort {
         quickSort(arr, j+1, high);
     }
 
+    public static void swap(int[] arr, int i, int j) {
+       int temp = arr[i];
+       arr[i] = arr[j];
+       arr[j] = temp;
+    }
+
 
     public static void main(String[] args){
-        int[] arr = {2,6,1,3,9,34,27,18,28,87,73,90};
+//        int[] arr = {2,6,1,3,9,34,27,18,28,87,73,90};
+        int[] arr = {2,6,1,3,9,8};
         quickSort(arr, 0, arr.length-1);
         for (int i = 0; i < arr.length; i++) {
             System.out.println(arr[i]);

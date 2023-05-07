@@ -13,8 +13,6 @@ class QuickSort2 {
     private static void sort(int[] arr) {
       int initDex = arr.length / 2 + 1;
 
-
-
       for (int i  = 0; i < initDex; i ++) {
           if (arr[i] > arr[initDex] && (initDex + i + 1) < arr.length) {
               int temp =  arr[initDex + i + 1] ;
@@ -22,8 +20,6 @@ class QuickSort2 {
               arr[initDex + i + 1] =  arr[i];
           }
       }
-
-
 
     }
 }

@@ -26,6 +26,7 @@ public class 翻转链表 {
     public static ListNode reverseList(ListNode head) {
         ListNode prev = null;
         ListNode current = head;
+        // 这里只需要考虑cur 会否为空即可，因为实际上翻转时，cur前面一个节点会被赋值给cur.next，所以不需要考虑cur.next是否为null
         while (current != null) {
             ListNode nextTemp = current.next;
             current.next = prev;

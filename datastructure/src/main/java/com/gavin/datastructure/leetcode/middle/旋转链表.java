@@ -3,7 +3,7 @@ package com.gavin.datastructure.leetcode.middle;
 import com.gavin.datastructure.leetcode.ListNode;
 
 /**
- * 给定一个链表，旋转链表，将链表每个节点向右移动 k 个位置，其中 k 是非负数。
+ * 给定一个链表，旋转链表，将链表每个节点向右移k个位置，其中k是非负数。
  *
  * 示例 1:
  *

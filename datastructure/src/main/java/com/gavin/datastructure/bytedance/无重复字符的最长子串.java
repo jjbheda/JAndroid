@@ -1,5 +1,6 @@
 package com.gavin.datastructure.bytedance;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -55,8 +56,30 @@ class 无重复字符的最长子串 {
         return ans;
     }
 
-    //滑动窗口
+    //滑动窗口  好理解
     public int lengthOfLongestSubstring2(String s) {
+        if (s.length() == 0) return 0;
+        HashMap<Character,Integer> map = new HashMap<>();
+        int max = 0;
+        int left = 0;
+
+        for (int i = 0; i < s.length(); i++) {
+            if (map.containsKey(s.charAt(i))) {
+                // left 更新，注意要看重复的字符串出现在之前的哪个位置上.比如"abba"
+                // 注意map保存的始终只有唯一的Char，不会重复，只是不断地更新这个Char对应的索引位置
+                // 比如计算到最后一个a时，这个a已经出现在第一个位置上map.get(s.charAt(i)) + 1 = 2，而此时
+                // left 实际已经移动到索引为2的位置
+                left = Math.max(left, map.get(s.charAt(i)) + 1);
+            }
+            map.put(s.charAt(i), i);
+            max = Math.max(max, i - left + 1);
+        }
+
+        return max;
+    }
+
+    //滑动窗口
+    public int lengthOfLongestSubstring3(String s) {
         // 哈希集合，记录每个字符是否出现过
         Set<Character> occ = new HashSet<Character>();
         int n = s.length();

@@ -67,7 +67,7 @@ class 无重复字符的最长子串 {
             if (map.containsKey(s.charAt(i))) {
                 // left 更新，注意要看重复的字符串出现在之前的哪个位置上.比如"abba"
                 // 注意map保存的始终只有唯一的Char，不会重复，只是不断地更新这个Char对应的索引位置
-                // 比如计算到最后一个a时，这个a已经出现在第一个位置上map.get(s.charAt(i)) + 1 = 2，而此时
+                // 比如计算到最后一个a时，这个a已经出现在第一个位置上map.get(s.charAt(i)) + 1 = 1，而此时
                 // left 实际已经移动到索引为2的位置
                 left = Math.max(left, map.get(s.charAt(i)) + 1);
             }

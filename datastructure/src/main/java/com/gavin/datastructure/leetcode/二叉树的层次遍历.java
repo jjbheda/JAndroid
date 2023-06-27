@@ -64,8 +64,6 @@ class 二叉树的层次遍历 {
             }
             res.add(temp);
        }
-        //翻转最终结果并返回
-        Collections.reverse(res);
         return res;
     }
 }

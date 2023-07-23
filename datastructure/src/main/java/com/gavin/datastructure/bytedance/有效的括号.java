@@ -57,6 +57,7 @@ class 有效的括号 {
         for (int i = 0; i < n; i++) {
             char ch = s.charAt(i);
             if (pairs.containsKey(ch)) {
+                // 这里是个很聪明的选择，要注意栈键值对先后顺序。栈顶不是左括号这种，直接返回fasle
                 if (stack.isEmpty() || stack.peek() != pairs.get(ch)) {
                     return false;
                 }

@@ -38,21 +38,42 @@ class 爬楼梯 {
        for (int i = 2; i <= n ; i ++) {
             dp[i] = dp[i - 1] + dp[i - 2];
        }
-       return dp[n];
+       return dp[n]; // 计算到dp[n]
     }
 
     // 空间复杂度优化
 
     public int climbStairs2(int n) {
-        if (n < 1) return 0;
-        if (n == 2 || n == 1)
-            return 1;
-        int prev = 1, curr = 1;
-        for (int i = 3; i <= n; i++) {
-            int sum = prev + curr;
-            prev = curr;
-            curr = sum;
+            if (n == 1) {
+                return 1;
+            }
+            int first = 1;
+            int second = 2;
+            for (int i = 3; i<=n; i++) { // 例如n =3 ,这里中间的等号不能少
+                int third = first + second;
+                first = second;
+                second = third; // 注意这里最后是赋值给了second
+            }
+
+            return second;
         }
-        return curr;
+
+    public int maxProduct(int[] nums) {
+        int length = nums.length;
+        int[] maxF = new int[length];
+        int[] minF = new int[length];
+        System.arraycopy(nums, 0, maxF, 0, length);
+        System.arraycopy(nums, 0, minF, 0, length);
+        for (int i = 1; i < length; ++i) {
+            maxF[i] = Math.max(maxF[i - 1] * nums[i], Math.max(nums[i], minF[i - 1] * nums[i]));
+            minF[i] = Math.min(minF[i - 1] * nums[i], Math.min(nums[i], maxF[i - 1] * nums[i]));
+        }
+        int ans = maxF[0];
+        for (int i = 1; i < length; ++i) {
+            ans = Math.max(ans, maxF[i]);
+        }
+        return ans;
     }
+
+
 }
